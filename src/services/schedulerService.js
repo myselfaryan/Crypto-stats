@@ -12,7 +12,7 @@ export const startScheduler = () => {
     .catch(error => logger.error('Initial data fetch failed:', error));
 
   // Run the job every 1 minute
-  cron.schedule('* * * * *', async () => {
+  cron.schedule('0 */2 * * *', async () => {
     logger.info('Running scheduled job to fetch crypto data');
     try {
       await fetchCryptoData();
@@ -22,5 +22,7 @@ export const startScheduler = () => {
     }
   });
 
-  logger.info('Scheduler started. Job will run every minute.');
+  logger.info('Scheduler started. Job will run every 2 hours.');
 };
+
+  
